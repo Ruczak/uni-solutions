@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import { router as articleRouter } from './routes/articles';
 import { router as assetRouter } from './routes/asset';
 import { router as projectRouter } from './routes/projects';
+import { router as contactRouter } from './routes/contact';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(bodyParser.json());
 
 app.use(articleRouter);
 app.use(projectRouter);
+app.use(contactRouter);
 app.use(assetRouter);
 
 app.listen(process.env.SERV_PORT, () =>

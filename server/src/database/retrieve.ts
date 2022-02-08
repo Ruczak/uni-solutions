@@ -8,6 +8,8 @@ export const retreive = async (
     const conn = await new sql.ConnectionPool(config).connect();
     const result = await conn.request().query(query);
 
+    conn.close();
+
     return result.recordsets[0];
   } catch (err) {
     throw err;

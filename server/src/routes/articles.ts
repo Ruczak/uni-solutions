@@ -12,11 +12,8 @@ router.get('/articles/categories', async (req: Request, res: Response) => {
     res.send({ result });
   } catch (err) {
     console.log(err);
-    res.send({
-      err: {
-        code: 500,
-        msg: 'Something went wrong with the server.'
-      }
+    res.status(500).send({
+      err: 'Something went wrong with the server.'
     });
   }
 });
@@ -30,11 +27,8 @@ router.get('/articles', async (req: Request, res: Response) => {
     res.send({ result });
   } catch (err) {
     console.log(err);
-    res.send({
-      err: {
-        code: 500,
-        msg: 'Something went wrong with the server.'
-      }
+    res.status(500).send({
+      err: 'Something went wrong with the server.'
     });
   }
 });

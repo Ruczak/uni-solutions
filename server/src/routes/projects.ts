@@ -1,19 +1,20 @@
 import express, { Request, Response } from 'express';
+import { appendFile } from 'fs';
 import { retreive } from '../database/retrieve';
 
 const router = express.Router();
 
-router.get('/articles/categories', async (req: Request, res: Response) => {
+router.get('/projects/categories', async (req: Request, res: Response) => {
   try {
     const result = await retreive(
-      'SELECT Id AS id, Name AS name FROM ArticleCategories'
+      'SELECT Id AS id, Name AS name FROM ProjectCategories'
     );
 
     res.send({ result });
   } catch (err) {
     console.log(err);
     res.send({
-      err: {
+      error: {
         code: 500,
         msg: 'Something went wrong with the server.'
       }
@@ -21,17 +22,17 @@ router.get('/articles/categories', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/articles', async (req: Request, res: Response) => {
+router.get('/projects', async (req: Request, res: Response) => {
   try {
     const result = await retreive(
-      'SELECT Id AS id, Title as title, Content as content, Thumbnail as thumbnail, IdCategory AS category, CreationTime AS created FROM Articles'
+      'SELECT Id AS id, Name AS name, Description AS description, IdCategory AS category, CreationDate as created FROM Projects'
     );
 
     res.send({ result });
   } catch (err) {
     console.log(err);
     res.send({
-      err: {
+      error: {
         code: 500,
         msg: 'Something went wrong with the server.'
       }

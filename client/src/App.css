@@ -69,10 +69,7 @@
   transition: 0.2s;
 }
 
-.slider__controller--current {
-  opacity: 1;
-}
-
+.slider__controller--current,
 .slider__controller:hover {
   opacity: 1;
 }
@@ -82,11 +79,6 @@
   width: 100%;
   background-color: #000;
   position: absolute;
-  z-index: 1;
-}
-
-.slide--current {
-  z-index: 2;
 }
 
 .slide__img {

@@ -16,7 +16,7 @@ const Slider = ({ slides }) => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [slides.length]);
 
   // useEffect(() => console.log(slide), [slide]);
 
@@ -27,9 +27,10 @@ const Slider = ({ slides }) => {
           return (
             <Slide
               src={value}
+              alt={`slide_${i + 1}`}
               key={i}
               active={i === slide}
-              alt={`slide_${i + 1}`}
+              position={i - slide}
             />
           );
         })}

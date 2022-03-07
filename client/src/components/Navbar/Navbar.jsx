@@ -5,7 +5,7 @@ import Logo from '../Logo';
 const Navbar = () => {
   return (
     <div className="navbar">
-      <Logo />
+      <Logo size={64} />
       <Link>About us</Link>
       <Link>Projects</Link>
       <Link>Blog</Link>

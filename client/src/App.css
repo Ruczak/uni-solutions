@@ -32,3 +32,68 @@
 .link:hover {
   background-color: lightgray;
 }
+
+.slider {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider__slides {
+  width: 100%;
+  position: relative;
+  min-height: 30vh;
+}
+
+.slider__controllers {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.slider__controller {
+  margin: 0 5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.6;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px black;
+  transition: 0.2s;
+}
+
+.slider__controller--current {
+  opacity: 1;
+}
+
+.slider__controller:hover {
+  opacity: 1;
+}
+
+.slide {
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  position: absolute;
+  z-index: 1;
+}
+
+.slide--current {
+  z-index: 2;
+}
+
+.slide__img {
+  max-height: 100%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

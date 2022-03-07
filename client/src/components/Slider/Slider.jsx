@@ -11,15 +11,26 @@ const Slider = ({ slides }) => {
   return (
     <div className="slider">
       <div className="slider__slides">
-        {slides.map((slide, i) => {
-          return <Slide src={slide} key={i} alt={`slide_${i + 1}`} />;
+        {slides.map((value, i) => {
+          return (
+            <Slide
+              src={value}
+              key={i}
+              active={i === slide}
+              alt={`slide_${i + 1}`}
+            />
+          );
         })}
       </div>
       <div className="slider__controllers">
-        {slides.map((slide, i) => {
+        {slides.map((val, i) => {
           return (
             <div
-              className="slider__controller"
+              className={
+                i === slide
+                  ? 'slider__controller slider__controller--current'
+                  : 'slider__controller'
+              }
               key={i}
               onClick={() => controlHandler(i)}
             ></div>

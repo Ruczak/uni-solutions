@@ -21,6 +21,7 @@
   flex-flow: column nowrap;
   align-content: center;
   overflow: hidden;
+  justify-content: space-evenly;
 }
 
 .navbar__break {

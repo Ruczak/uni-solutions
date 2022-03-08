@@ -1,4 +1,4 @@
-@import url('fonts.css');
+@import url('./fonts.css');
 
 * {
   box-sizing: border-box;
@@ -31,4 +31,20 @@
 
 .link:hover {
   background-color: lightgray;
+}
+
+.footer {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.footer .logo,
+.footer__caption {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer__copyright {
+  font-weight: 300;
+  font-size: 95%;
 }

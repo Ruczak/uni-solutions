@@ -32,3 +32,78 @@
 .link:hover {
   background-color: lightgray;
 }
+
+.contact {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.contact > * {
+  margin-top: 5px;
+}
+
+.contact__message {
+  flex-basis: 100%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  column-gap: 5px;
+  row-gap: 5px;
+  box-shadow: none;
+}
+
+.contact__label {
+  height: 100%;
+}
+
+.contact__submit {
+  -webkit-appearance: none;
+  margin-left: auto;
+  padding: 0.5ch 1ch;
+  font-size: 100%;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  font-weight: 700;
+  background-color: #000;
+  color: white;
+}
+
+.contact__label {
+  line-height: 120%;
+}
+
+.contact__text-area,
+.contact__text-input {
+  border-radius: 0;
+  border: 1px solid black;
+  resize: none;
+  line-height: 120%;
+  padding: 0.1rem;
+}
+
+.text-input {
+  outline: none;
+  border: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.text-input__input {
+  flex-grow: 2;
+  margin-left: 5px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.text-input__input:focus {
+  outline: none;
+}
+
+.text-input--fill {
+  flex-basis: 100%;
+  flex-grow: 2;
+}

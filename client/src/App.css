@@ -9,13 +9,33 @@
 }
 
 .navbar {
+  box-shadow: 0px 0px 2px black;
+  padding: 0 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.navbar__menu {
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
-  box-shadow: 0px 0px 2px black;
+  align-content: center;
+  overflow: hidden;
+  justify-content: space-evenly;
+}
+
+.navbar__break {
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+.hamburger {
+  display: inline-block;
+  align-self: center;
 }
 
 .logo {
+  display: inline-block;
   font-size: 2rem;
   cursor: pointer;
   font-weight: 700;
@@ -23,7 +43,6 @@
 
 .link {
   width: 100%;
-  text-align: center;
   font-size: 1.5rem;
   cursor: pointer;
   text-transform: uppercase;
@@ -31,6 +50,63 @@
 
 .link:hover {
   background-color: lightgray;
+}
+
+.slider {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider__slides {
+  width: 100%;
+  position: relative;
+  min-height: 30vh;
+}
+
+.slider__controllers {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.slider__controller {
+  margin: 0 5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.6;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px black;
+  transition: 0.2s;
+}
+
+.slider__controller--current,
+.slider__controller:hover {
+  opacity: 1;
+}
+
+.slide {
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  position: absolute;
+}
+
+.slide__img {
+  max-height: 100%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .footer {

@@ -6,26 +6,53 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [subject, setSubject] = useState('');
-  const [desc, setDesc] = useState('');
+  const [description, setDescription] = useState('');
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const [firstname, ...lastnames] = name.split(' ');
+
+    const message = {
+      firstname,
+      lastname: lastnames.join(' '),
+      email,
+      phone,
+      subject,
+      description
+    };
+
+    const response = await fetch('http://localhost:8080/contact', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(message)
+    });
+
+    const body = response.json();
+
+    console.log(response.status, body);
+  };
 
   return (
-    <form className="contact">
+    <form className="contact" onSubmit={(e) => submitHandler(e)}>
       <TextInput
         label="Name"
-        fill={true}
         onChange={(e) => setName(e.target.value)}
         value={name}
+        fill
       />
       <TextInput
         label="Email"
-        fill={false}
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         email={true}
       />
       <TextInput
         label="Phone"
-        fill={false}
         onChange={(e) => setPhone(e.target.value)}
         value={phone}
       />
@@ -43,8 +70,8 @@ const ContactForm = () => {
           className="contact__text-area"
           cols="30"
           rows="8"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         ></textarea>
       </div>
       <button type="submit" className="contact__submit">

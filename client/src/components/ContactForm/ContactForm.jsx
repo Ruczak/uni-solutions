@@ -7,35 +7,53 @@ const ContactForm = () => {
   const [phone, setPhone] = useState('');
   const [subject, setSubject] = useState('');
   const [description, setDescription] = useState('');
+  const [error, setError] = useState(null);
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const [firstname, ...lastnames] = name.split(' ');
+    try {
+      const [firstname, ...lastnames] = name.split(' ');
 
-    const message = {
-      firstname,
-      lastname: lastnames.join(' '),
-      email,
-      phone,
-      subject,
-      description
-    };
+      const message = {
+        firstname,
+        lastname: lastnames.join(' '),
+        email,
+        subject,
+        description
+      };
 
-    const response = await fetch('http://localhost:8080/contact', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
-      body: JSON.stringify(message)
-    });
+      if (phone.length > 0) {
+        if (!/^\+?[()\-\d\s]+$/i.test(phone))
+          throw new Error(
+            'Phone field contains characters that are not numbers'
+          );
+        else message.phone = phone;
+      }
 
-    const body = response.json();
+      const response = await fetch('http://localhost:8080/contact', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify(message)
+      });
 
-    console.log(response.status, body);
+      const body = await response.json();
+
+      if (!response.ok) throw new Error(body.error);
+
+      window.alert('Successfully added ' + body.addedRows);
+    } catch (error) {
+      setError(error);
+    }
   };
+
+  useEffect(() => {
+    if (error) window.alert(error.message);
+  }, [error]);
 
   return (
     <form className="contact" onSubmit={(e) => submitHandler(e)}>

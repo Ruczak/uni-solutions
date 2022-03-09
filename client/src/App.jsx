@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer';
 import Slider from './components/Slider/Slider';
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
           'https://placeimg.com/640/480/any'
         ]}
       />
+      <Footer />
     </React.Fragment>
   );
 };

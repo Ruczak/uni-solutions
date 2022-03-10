@@ -174,3 +174,21 @@
   font-weight: 300;
   text-align: justify;
 }
+
+.offers {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.offers__title {
+  text-align: center;
+  flex-basis: 100%;
+  text-transform: uppercase;
+  grid-column: 1 / -1;
+}
+
+.offer {
+  text-align: center;
+  padding: 10px 5px;
+}

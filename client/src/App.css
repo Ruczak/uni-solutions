@@ -195,6 +195,10 @@
   background-color: #7fba7f;
 }
 
+.modal--success .modal-option:hover {
+  background-color: #537a53;
+}
+
 .modal--warning .modal__popup {
   background-color: #eddb51;
 }
@@ -203,10 +207,18 @@
   background-color: #baac3f;
 }
 
+.modal--warning .modal-option:hover {
+  background-color: #7a712a;
+}
+
 .modal--failure .modal__popup {
   background-color: #f06060;
 }
 
 .modal--failure .modal-option {
   background-color: #d65656;
+}
+
+.modal--failure .modal-option:hover {
+  background-color: #963c3c;
 }

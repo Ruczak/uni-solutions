@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Logo size={64} />
+      <Logo size={32} />
       <Hamburger size="xl" onClick={handleClick} />
       <div className="navbar__break"></div>
       <div className="navbar__menu" style={{ height }}>

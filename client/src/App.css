@@ -16,6 +16,10 @@
   justify-content: space-between;
 }
 
+.navbar .logo {
+  margin: 10px 0 5px;
+}
+
 .navbar__menu {
   display: flex;
   flex-flow: column nowrap;

@@ -25,7 +25,7 @@ router.get('/projects/categories', async (req: Request, res: Response) => {
 router.get('/projects', async (req: Request, res: Response) => {
   try {
     const result = await retreive(
-      'SELECT Id AS id, Name AS name, Description AS description, IdCategory AS category, CreationDate as created FROM Projects'
+      'SELECT Id AS id, Name AS name, Description AS description, IdCategory AS category, CreationDate as created, Image as image FROM Projects'
     );
 
     res.send({ result });

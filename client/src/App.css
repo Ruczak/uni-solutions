@@ -154,7 +154,7 @@
 }
 
 .projects__category {
-  transition: 0.2s;
+  transition: 0.1s;
   cursor: pointer;
 }
 
@@ -191,6 +191,7 @@
   margin: 0 5px;
   padding: 0.5ch 0;
   flex-grow: 2;
+  border-radius: 0;
 }
 
 .projects__input:focus {
@@ -203,7 +204,7 @@
   padding: 1ch 1ch 0.5ch;
   background-color: #fff;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.1s;
 }
 
 .projects__submit:hover,
@@ -211,12 +212,6 @@
   background-color: #000;
   color: #fff;
 }
-
-/* .projects__result {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: masonry;
-} */
 
 .projects__result {
   width: 100%;
@@ -247,16 +242,19 @@
   width: 100%;
   object-fit: cover;
   position: relative;
+  cursor: pointer;
 }
 
 .project__img {
   display: block;
   width: 100%;
   height: 100%;
-  animation: project-img-deactivate 0.2s;
+  animation: project-img-deactivate 0.1s;
 }
 
 .project__title {
+  padding: 5px;
+  text-align: center;
   display: none;
   position: absolute;
   top: 50%;
@@ -265,21 +263,19 @@
   color: white;
   text-transform: uppercase;
   font-size: large;
-  animation: project-title-deactivate 0.2s;
+  animation: project-title-deactivate 0.1s;
 }
 
-.project:hover .project__img,
 .project--active .project__img {
   filter: brightness(25%);
   animation-name: project-img-activate;
-  animation-duration: 0.2s;
+  animation-duration: 0.1s;
 }
 
-.project:hover .project__title,
 .project--active .project__title {
   display: block;
   animation-name: project-title-activate;
-  animation-duration: 0.2s;
+  animation-duration: 0.1s;
 }
 
 @keyframes project-title-activate {

@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
-const Project = (image, title, id) => {
+const Project = ({ image, title, id }) => {
+  const [active, setActive] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (active) ref.current.classList.add('project--active');
+    else ref.current.classList.remove('project--active');
+  }, [active]);
+
   return (
-    <div className="project">
+    <div className="project" ref={ref} onClick={() => setActive(!active)}>
       <img
         src={`http://localhost:8080/asset/${image}`}
         alt={image}

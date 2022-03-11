@@ -27,29 +27,30 @@ router.get('/projects', async (req: Request, res: Response) => {
 
     const conditions: string[] = [];
 
-    const { body } = req;
+    const body: { category?: number; search?: string } = {};
 
-    if (body.category) {
+    if (req.query.category) {
       conditions.push('IdCategory = @category');
       stmt.input('category', sql.Int);
+      body.category = parseInt(req.query.category as string);
     }
 
-    if (body.search) {
+    if (req.query.search) {
       conditions.push('Name LIKE @search');
       stmt.input('search', sql.VarChar);
-      body.search = `%${body.search}%`;
+      body.search = `%${req.query.search}%`;
     }
 
-    let query =
+    let sqlQuery =
       'SELECT Id AS id, Name AS name, Description AS description, IdCategory AS category, CreationDate as created, Image as image FROM Projects';
 
     if (conditions.length > 0) {
-      query += ' WHERE ' + conditions.join(' AND ');
+      sqlQuery += ' WHERE ' + conditions.join(' AND ');
     }
 
-    stmt.prepare(query, (err) => {
+    stmt.prepare(sqlQuery, (err) => {
       if (err) throw err;
-      stmt.execute(req.body, (err, result) => {
+      stmt.execute(body, (err, result) => {
         if (err) throw err;
         res.send({ result: result?.recordsets[0] });
       });

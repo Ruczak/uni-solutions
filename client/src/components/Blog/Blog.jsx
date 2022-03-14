@@ -1,9 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import Article from './Article';
 
 const Blog = () => {
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState(0);
-  const [error, setError] = useState();
+  const [articles, setArticles] = useState([]);
+  const [error, setError] = useState(null);
+
+  const fetchArticles = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/articles');
+
+      const body = await response.json();
+
+      if (!response.ok) throw new Error(body.error);
+
+      setArticles(body.result);
+    } catch (err) {
+      setError(err);
+    }
+  };
 
   const fetchCategories = async () => {
     try {
@@ -21,7 +37,7 @@ const Blog = () => {
 
   useEffect(() => fetchCategories(), []);
 
-  useEffect(() => console.log(category), [category]);
+  useEffect(() => fetchArticles(), [category]);
 
   useEffect(() => {
     if (error) console.log(error);
@@ -50,7 +66,20 @@ const Blog = () => {
           })}
         </div>
       </div>
-      <div className="blog__articles"></div>
+      <div className="blog__articles">
+        {articles.map((article, i) => {
+          return (
+            <Article
+              key={i}
+              id={article.id}
+              image={article.thumbnail}
+              title={article.title}
+              content={article.content}
+              date={new Date(article.created)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

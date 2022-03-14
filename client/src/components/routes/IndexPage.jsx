@@ -7,7 +7,8 @@ const IndexPage = () => {
     <React.Fragment>
       <Slider
         slides={[
-          `${process.env.REACT_APP_SERVER_HOST}/asset/welcome-to-uni.jpg`
+          `${process.env.REACT_APP_SERVER_HOST}/asset/welcome-to-uni.jpg`,
+          'https://placeimg.com/640/480/any'
         ]}
       />
       <AboutUs />

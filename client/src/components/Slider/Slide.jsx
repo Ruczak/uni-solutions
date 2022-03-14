@@ -22,7 +22,7 @@ const Slide = ({ src, alt, position = 0 }) => {
 
       const step = () => {
         percent += 2;
-        setLeft(left + difference * easeInOutSine(percent / 100));
+        setLeft(() => left + difference * easeInOutSine(percent / 100));
 
         if (percent < 100) window.requestAnimationFrame(step);
       };

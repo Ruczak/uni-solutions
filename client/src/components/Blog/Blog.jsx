@@ -10,7 +10,7 @@ const Blog = () => {
 
   const fetchArticles = async () => {
     try {
-      let url = 'http://localhost:8080/articles';
+      let url = process.env.REACT_APP_SERVER_HOST + '/articles';
       const conditions = [];
 
       if (search.length > 0) conditions.push(`search=${search}`);
@@ -33,7 +33,9 @@ const Blog = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:8080/articles/categories');
+      const response = await fetch(
+        process.env.REACT_APP_SERVER_HOST + '/articles/categories'
+      );
 
       const body = await response.json();
 

@@ -5,12 +5,18 @@ const Article = ({ id, image, title, content, date }) => {
     <div className="article">
       <img
         className="article__img"
-        src={`http://localhost:8080/asset/${image}`}
+        src={`${process.env.REACT_APP_SERVER_HOST}/asset/${image}`}
         alt={image}
       />
       <h3 className="article__title">{title}</h3>
-      <p className="article__content">{content}</p>
       <span className="article__date">{date.toLocaleString()}</span>
+      {content.split('\r').map((text, i) => {
+        return (
+          <p className="article__content" key={i}>
+            {text}
+          </p>
+        );
+      })}
     </div>
   );
 };

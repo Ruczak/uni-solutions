@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ModalOption = ({ children, onClick, type }) => {
+const ModalOption = ({ children, onClick }) => {
   return (
     <button
       className="modal-option"

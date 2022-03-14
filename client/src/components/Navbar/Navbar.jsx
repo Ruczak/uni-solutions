@@ -48,10 +48,10 @@ const Navbar = () => {
       <Hamburger size="xl" onClick={handleClick} />
       <div className="navbar__break"></div>
       <div className="navbar__menu" style={{ height }}>
-        <Link>About us</Link>
-        <Link>Projects</Link>
-        <Link>Blog</Link>
-        <Link>Contact</Link>
+        <Link href="/">About us</Link>
+        <Link href="/projects">Projects</Link>
+        <Link href="/blog">Blog</Link>
+        <Link href="/contact">Contact</Link>
       </div>
     </div>
   );

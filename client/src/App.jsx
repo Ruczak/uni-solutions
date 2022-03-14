@@ -13,8 +13,8 @@ import NotFoundPage from './components/routes/NotFoundPage';
 const App = () => {
   return (
     <React.Fragment>
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<IndexPage />} />
           <Route path="/projects" element={<ProjectPage />} />

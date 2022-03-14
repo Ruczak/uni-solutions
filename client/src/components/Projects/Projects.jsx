@@ -42,8 +42,6 @@ const Projects = () => {
 
       if (!response.ok) throw new Error(body.error);
 
-      console.log(url);
-
       setProjects(body.result);
     } catch (err) {
       setError(err);

@@ -11,7 +11,9 @@ const Projects = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:8080/projects/categories');
+      const response = await fetch(
+        `${process.env.REACT_APP_SERVER_HOST}/projects/categories`
+      );
 
       const body = await response.json();
 
@@ -30,7 +32,7 @@ const Projects = () => {
       if (search.length > 0) conditions.push('search=' + search);
       if (category !== 0) conditions.push('category=' + category);
 
-      let url = 'http://localhost:8080/projects';
+      let url = `${process.env.REACT_APP_SERVER_HOST}/projects`;
 
       if (conditions.length > 0) url += '?' + conditions.join('&');
 

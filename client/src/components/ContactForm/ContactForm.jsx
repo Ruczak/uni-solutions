@@ -31,15 +31,18 @@ const ContactForm = () => {
         else message.phone = phone;
       }
 
-      const response = await fetch('http://localhost:8080/contact', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        },
-        body: JSON.stringify(message)
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_SERVER_HOST}/contact`,
+        {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          },
+          body: JSON.stringify(message)
+        }
+      );
 
       const body = await response.json();
 

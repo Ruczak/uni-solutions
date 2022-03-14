@@ -5,11 +5,21 @@ const Blog = () => {
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState(0);
   const [articles, setArticles] = useState([]);
+  const [search, setSearch] = useState('');
   const [error, setError] = useState(null);
 
   const fetchArticles = async () => {
     try {
-      const response = await fetch('http://localhost:8080/articles');
+      let url = 'http://localhost:8080/articles';
+      const conditions = [];
+
+      if (search.length > 0) conditions.push(`search=${search}`);
+
+      if (category !== 0) conditions.push(`category=${category}`);
+
+      if (conditions.length > 0) url += '?' + conditions.join('&');
+
+      const response = await fetch(url);
 
       const body = await response.json();
 
@@ -49,6 +59,17 @@ const Blog = () => {
         <h1 className="blog__title">Blog</h1>
         <div className="blog__categories">
           <span className="blog__categories-title">Category:</span>
+          <span
+            className={
+              0 === category
+                ? 'blog__category blog__category--current'
+                : 'blog__category'
+            }
+            key={0}
+            onClick={() => setCategory(0)}
+          >
+            All
+          </span>
           {categories.map(({ id, name }, i) => {
             return (
               <span
@@ -57,7 +78,7 @@ const Blog = () => {
                     ? 'blog__category blog__category--current'
                     : 'blog__category'
                 }
-                key={i}
+                key={i + 1}
                 onClick={() => setCategory(id)}
               >
                 {name}
@@ -65,6 +86,25 @@ const Blog = () => {
             );
           })}
         </div>
+        <form
+          className="blog__search"
+          onSubmit={(e) => {
+            e.preventDefault();
+            fetchArticles();
+          }}
+        >
+          Search:{' '}
+          <input
+            type="text"
+            className="blog__input"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Enter keywords here..."
+          />
+          <button className="blog__submit">
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
       </div>
       <div className="blog__articles">
         {articles.map((article, i) => {

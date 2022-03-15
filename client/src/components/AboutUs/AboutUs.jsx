@@ -10,7 +10,7 @@ const AboutUs = () => {
       <div className="showcase">
         <img
           src={`${process.env.REACT_APP_SERVER_HOST}/asset/welcome-to-uni.jpg`}
-          alt="Showcase Image"
+          alt="Showcase"
           className="showcase__img"
         />
         {windowWidth < 1080 ? (

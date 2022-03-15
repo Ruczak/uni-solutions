@@ -3,10 +3,12 @@ import Link from './Link';
 import Logo from '../Logo';
 import Hamburger from './Hamburger';
 import { easeInOutSine } from '../../easings';
+import { useResize } from '../../hooks/useResize';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState(0);
+  const [windowWidth] = useResize();
   const firstUpdate = useRef(true);
 
   const handleClick = () => {
@@ -42,17 +44,34 @@ const Navbar = () => {
     });
   }, [isOpen]);
 
+  useEffect(() => {
+    if (windowWidth >= 1080) {
+      setHeight('inherit');
+    }
+  }, [windowWidth]);
+
   return (
     <div className="navbar">
-      <Logo size={32} />
-      <Hamburger size="xl" onClick={handleClick} />
-      <div className="navbar__break"></div>
-      <div className="navbar__menu" style={{ height }}>
-        <Link href="/">About us</Link>
-        <Link href="/projects">Projects</Link>
-        <Link href="/blog">Blog</Link>
-        <Link href="/contact">Contact</Link>
-      </div>
+      {windowWidth < 1080 ? (
+        <React.Fragment>
+          <Logo size={32} />
+          <Hamburger size="xl" onClick={handleClick} />
+          <div className="navbar__menu" style={{ height }}>
+            <Link href="/">About us</Link>
+            <Link href="/projects">Projects</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/contact">Contact</Link>
+          </div>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Link href="/">About us</Link>
+          <Link href="/projects">Projects</Link>
+          <Logo size={32} />
+          <Link href="/blog">Blog</Link>
+          <Link href="/contact">Contact</Link>
+        </React.Fragment>
+      )}
     </div>
   );
 };

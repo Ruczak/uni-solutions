@@ -28,11 +28,6 @@
   flex-basis: 100%;
 }
 
-.navbar__break {
-  flex-basis: 100%;
-  flex-grow: 2;
-}
-
 .hamburger {
   margin-right: 10px;
   display: inline-block;
@@ -681,4 +676,25 @@
   text-align: justify;
   font-weight: 300;
   color: black;
+}
+
+@media (min-width: 1080px) {
+  .navbar {
+    justify-content: space-evenly;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .navbar .link {
+    display: block;
+    position: relative;
+  }
+
+  .link a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

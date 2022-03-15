@@ -6,7 +6,7 @@ const AboutUs = () => {
     <div className="main-content">
       <div className="showcase">
         <img
-          src="http://localhost:8080/asset/welcome-to-uni.jpg"
+          src={`${process.env.REACT_APP_SERVER_HOST}/asset/welcome-to-uni.jpg`}
           alt="Showcase Image"
           className="showcase__img"
         />

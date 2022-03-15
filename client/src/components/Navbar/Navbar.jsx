@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from './Link';
 import Logo from '../Logo';
 import Hamburger from './Hamburger';
+import { easeInOutSine } from '../../easings';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,9 @@ const Navbar = () => {
       const step = () => {
         percent += 2.5;
 
-        setHeight((maxHeight * (!isOpen ? 100 - percent : percent)) / 100);
+        setHeight(
+          maxHeight * easeInOutSine((!isOpen ? 100 - percent : percent) / 100)
+        );
 
         if (percent < 100) window.requestAnimationFrame(step);
       };
@@ -45,10 +48,10 @@ const Navbar = () => {
       <Hamburger size="xl" onClick={handleClick} />
       <div className="navbar__break"></div>
       <div className="navbar__menu" style={{ height }}>
-        <Link>About us</Link>
-        <Link>Projects</Link>
-        <Link>Blog</Link>
-        <Link>Contact</Link>
+        <Link href="/">About us</Link>
+        <Link href="/projects">Projects</Link>
+        <Link href="/blog">Blog</Link>
+        <Link href="/contact">Contact</Link>
       </div>
     </div>
   );

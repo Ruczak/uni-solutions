@@ -4,7 +4,7 @@ const Logo = ({ size }) => {
   return (
     <div className="logo">
       <img
-        src="http://localhost:8080/asset/uni-logo.png"
+        src={`${process.env.REACT_APP_SERVER_HOST}/asset/uni-logo.png`}
         alt="Logo"
         style={{ width: size }}
       />

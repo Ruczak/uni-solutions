@@ -12,7 +12,7 @@ const Project = ({ image, title, id }) => {
   return (
     <div className="project" ref={ref} onClick={() => setActive(!active)}>
       <img
-        src={`http://localhost:8080/asset/${image}`}
+        src={`${process.env.REACT_APP_SERVER_HOST}/asset/${image}`}
         alt={image}
         className="project__img"
       />

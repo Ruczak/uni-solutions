@@ -697,4 +697,39 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .slider__slides {
+    min-height: 75vh;
+  }
+
+  .main-content {
+    padding: 0 20%;
+  }
+
+  .showcase {
+    display: block;
+    position: relative;
+  }
+
+  .showcase__img {
+    filter: brightness(50%);
+  }
+
+  .showcase__card {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+  }
+
+  .showcase__title {
+    font-size: 2.5rem;
+  }
+
+  .showcase__description {
+    font-size: large;
+  }
 }

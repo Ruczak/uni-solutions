@@ -1,21 +1,39 @@
 import React from 'react';
 import Offer from './Offer';
+import { useResize } from '../../hooks/useResize';
 
 const AboutUs = () => {
+  const [windowWidth] = useResize();
+
   return (
-    <div className="main-content">
+    <React.Fragment>
       <div className="showcase">
         <img
           src={`${process.env.REACT_APP_SERVER_HOST}/asset/welcome-to-uni.jpg`}
           alt="Showcase Image"
           className="showcase__img"
         />
-        <h1 className="showcase__title">Uni Solutions</h1>
-        <h2 className="showcase__subtitle">Architecture &amp; design</h2>
-        <p className="showcase__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac
-          tempor mauris, at mollis justo. Phasellus tincidunt eros turpis, a.{' '}
-        </p>
+        {windowWidth < 1080 ? (
+          <React.Fragment>
+            <h1 className="showcase__title">Uni Solutions</h1>
+            <h2 className="showcase__subtitle">Architecture &amp; design</h2>
+            <p className="showcase__description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac
+              tempor mauris, at mollis justo. Phasellus tincidunt eros turpis,
+              a.{' '}
+            </p>
+          </React.Fragment>
+        ) : (
+          <div className="showcase__card">
+            <h1 className="showcase__title">Uni Solutions</h1>
+            <h2 className="showcase__subtitle">Architecture &amp; design</h2>
+            <p className="showcase__description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac
+              tempor mauris, at mollis justo. Phasellus tincidunt eros turpis,
+              a.{' '}
+            </p>
+          </div>
+        )}
       </div>
       <div className="offers">
         <h2 className="offers__title">We offer</h2>
@@ -56,7 +74,7 @@ const AboutUs = () => {
           text="Available worldwide"
         />
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

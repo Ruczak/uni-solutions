@@ -757,4 +757,29 @@
   .projects__submit {
     padding: 2ch;
   }
+
+  .blog__categories {
+    overflow: auto;
+    justify-content: space-evenly;
+  }
+
+  .article {
+    display: block;
+    padding: 20px;
+  }
+
+  .article__img {
+    display: block;
+  }
+
+  .article__title,
+  .article__date,
+  .article__content {
+    margin: 10px 5px;
+  }
+
+  .article__title {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
 }

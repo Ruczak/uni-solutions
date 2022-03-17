@@ -439,6 +439,9 @@
 
 .modal__line {
   color: #000;
+  background: #000;
+  display: block;
+  border-color: #000;
 }
 
 .modal__description {
@@ -447,6 +450,7 @@
 }
 
 .modal__options {
+  margin-top: 10px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-end;
@@ -460,6 +464,10 @@
   background-color: #bababa;
   box-shadow: 0px 0px 2px #545454;
   transition: 50ms;
+}
+
+.modal-option:not(.modal-option:last-of-type) {
+  margin-right: 10px;
 }
 
 .modal-option:hover {

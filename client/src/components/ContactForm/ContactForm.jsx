@@ -50,8 +50,6 @@ const ContactForm = () => {
 
       if (!response.ok) throw new Error(body.error);
 
-      console.log('ses');
-
       setError(null);
       setModal(true);
     } catch (error) {

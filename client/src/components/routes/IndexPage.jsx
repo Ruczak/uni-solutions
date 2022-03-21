@@ -11,7 +11,9 @@ const IndexPage = () => {
           'https://placeimg.com/640/480/any'
         ]}
       />
-      <AboutUs />
+      <div className="main-content">
+        <AboutUs />
+      </div>
     </React.Fragment>
   );
 };

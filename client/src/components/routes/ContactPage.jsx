@@ -1,7 +1,11 @@
 import ContactForm from '../ContactForm/ContactForm';
 
 const ContactPage = () => {
-  return <ContactForm />;
+  return (
+    <div className="main-content">
+      <ContactForm />
+    </div>
+  );
 };
 
 export default ContactPage;
